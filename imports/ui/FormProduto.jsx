@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import SnackTera from './SnackTera.jsx';
-
 import { Produtos } from '../api/produtos.js'
 //Theme
 import RaisedButton from 'material-ui/RaisedButton';
@@ -33,8 +32,7 @@ class FormProduto extends Component{
 	handleChangeProdQtd = (event) => {this.setState({txtProdQtd: event.target.value});};
 
     handleSubmitProduto(event){
-        event.preventDefault();
-        //const text = ReactDOM.findDOMNode(this.refs.prodInput).value.trim();
+        event.preventDefault();        
         console.log(this.state.txtProduto);
         Produtos.insert({
             produto: this.state.txtProduto,
@@ -43,12 +41,9 @@ class FormProduto extends Component{
             quantidadeDisponivel: this.state.txtProdQtd,
         });
         //clear field after insert.
-        //ReactDOM.findDOMNode(this.refs.textInput).value = '';
         this.setState({txtProduto:"", txtProdDesc:"", txtProdValor:"", txtProdQtd:""});
-        // var snackTera = React.renderComponent(SnackTera);
-        // snackTera.someMethod();
+        //send message to user!
         this.setState({snackOpen: true, snackMessage:"Produto salvo com sucesso!"});
-        //SnackTera.handleTouchTap();
     }	    
 
     render(){

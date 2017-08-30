@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import Produto from './Produto.jsx';
+import ProdutoLista from './ProdutoLista.jsx';
 import Venda from './Venda.jsx';
 import FormProduto from './FormProduto.jsx'
 //import TeraAppBar from './TeraAppBar.jsx';
@@ -43,15 +43,7 @@ class App extends Component{
 		this.state = {
 			value: 1,			
 		};		
-	}
-	
-	//prepara os produtos para serem exibidos na tabela.
-	renderProdutos(){
-		//return this.getProdutos().map( (produto) => (
-		return this.props.produtos.map( (produto) => (
-			<Produto key={produto._id} produto={produto}/>
-		));
-	}
+	}	
 
 	//Prepara os produtos para serem exibidos no SelectField
 	renderProdutosSelect(){
@@ -70,9 +62,10 @@ class App extends Component{
 				<header>
 					<Venda /*renderProdutosSelect={this.renderProdutosSelect()}*//>
 					<h1>Produtos</h1>
-					<FormProduto />					
+					<FormProduto />
 				</header>				
-				<ul>{ this.renderProdutos() }</ul>
+				<ProdutoLista />
+				{/* <ul>{ this.renderProdutos() }</ul> */}
 			</div>
 		</MuiThemeProvider>
 		);
