@@ -5,7 +5,7 @@ import Venda from './Venda.jsx';
 //import TeraAppBar from './TeraAppBar.jsx';
 import SnackTera from './SnackTera.jsx';
 import {createContainer} from 'meteor/react-meteor-data';
-//import Venda from './venda.jsx';
+import Venda from './venda.jsx';
 import { Produtos } from '../api/produtos.js'
 
 //Theme
