@@ -20,7 +20,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import DatePicker from 'material-ui/DatePicker';
 import Slider from 'material-ui/Slider';
-
+import {Grid, Row, Col} from 'meteor/jimmiebtlr:react-flexbox-grid'
 //https://stackoverflow.com/questions/40791996/changing-a-component-in-reactjs-upon-clicking-a-button
 
 const muiTheme = getMuiTheme({
@@ -47,11 +47,18 @@ class App extends Component{
 				<AppBar title="Title" iconClassNameRight="muidocs-icon-navigation-expand-more">
 					<RaisedButton label="Salvar" primary={true} className="estilo"/>
 				</AppBar>
-				<header>
-					<Venda />
-					<h1>Produtos</h1>
-					<FormProduto />
+				<header>					
 				</header>				
+				<body>
+				<Grid fluid>
+					<Venda />
+						<h1>Produtos</h1>
+						<FormProduto />
+				
+
+				</Grid>
+				</body>
+
 				<ProdutoLista />
 			</div>
 		</MuiThemeProvider>

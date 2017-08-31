@@ -10,6 +10,8 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+//import RFBG from 'meteor/jimmiebtlr:react-flexbox-grid'
+import {Grid, Row, Col} from 'meteor/jimmiebtlr:react-flexbox-grid'
 
 const style = {
 	margin: 12,
@@ -25,7 +27,8 @@ class Venda extends Component{
 				valor: 10,
 				total:10,	
 			}],			
-		};				
+		};	
+					
 	};
 
 	handleProdutosVendidos(){
@@ -56,25 +59,36 @@ class Venda extends Component{
 		this.handleProdutosVendidos();
 	};
 	
-	handleSubmitVenda(event){
+	handleSubmitVenda(event){		
 		event.preventDefault();
 	};	
 	
-	render(){
+	render(){		
 		return (
 			<div>
 				<h1>Vendas</h1>
-					<form className="new-venda" onSubmit={this.handleSubmitVenda.bind(this)}>					
-						<TextField ref="cliInput" floatingLabelText="Nome do cliente" required={true} errorText="Campo requerido." className="estilo"/>
-						<DatePicker floatingLabelText="Data da venda" className="estilo"/>	
-						<SelectField value={this.state.value} onChange={this.handleChange} floatingLabelText="Selecione um produto" autoWidth={true} className="estilo">
-							{this.renderProdutosSelect()}
-						</SelectField>						
-
-						{/* <FloatingActionButton mini={true} className="estilo"> <ContentAdd /> </FloatingActionButton> Novo item da venda */}
+					<form className="new-venda" onSubmit={this.handleSubmitVenda.bind(this)}>										
+						<Row center="lg">
+							<Col xs={4}>
+								<TextField ref="cliInput" floatingLabelText="Nome do cliente" required={true} errorText="Campo requerido." className="estilo"/>														
+							</Col>	
+							<Col xs={4}>
+								<DatePicker floatingLabelText="Data da venda" className="estilo"/>	
+							</Col>
+							<Col xs={4}>
+								<SelectField value={this.state.value} onChange={this.handleChange} floatingLabelText="Selecione um produto" autoWidth={true} className="estilo">
+										{this.renderProdutosSelect()}
+								</SelectField>						
+							</Col>
+						</Row>
 						{ this.renderProdutosVendidos() }
-						{/* <ProdutoItemVenda /> */}
-						<RaisedButton label="Salvar" primary={true} type="submit" className="estilo"/>
+						<Row>														
+							{/* <FloatingActionButton mini={true} className="estilo"> <ContentAdd /> </FloatingActionButton> Novo item da venda */}							
+							{/* <ProdutoItemVenda /> */}
+							<Col xs={4}>
+								<RaisedButton label="Salvar" primary={true} type="submit" className="estilo"/>
+							</Col>
+						</Row>						
 					</form>
 			</div>
 		)		
