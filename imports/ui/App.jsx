@@ -4,7 +4,6 @@ import ProdutoLista from './ProdutoLista.jsx';
 import Venda from './Venda.jsx';
 import FormProduto from './FormProduto.jsx'
 //import TeraAppBar from './TeraAppBar.jsx';
-import SnackTera from './SnackTera.jsx';
 import {createContainer} from 'meteor/react-meteor-data';
 import { Produtos } from '../api/produtos.js'
 
@@ -33,39 +32,27 @@ const muiTheme = getMuiTheme({
   },
 });
 
-const style = {
-  margin: 12,
-};
-
 class App extends Component{	
-	constructor(props) {
-		super(props);
-		this.state = {
-			value: 1,			
-		};		
-	}	
-
-	//Prepara os produtos para serem exibidos no SelectField
-	renderProdutosSelect(){
-		return this.props.produtos.map( (produto, index) => (
-			<MenuItem value={index+1} primaryText={produto.produto}/>
-		));
-	}
+	// constructor(props) {
+	// 	super(props);
+	// 	this.state = {
+	// 		value: 1,			
+	// 	};		
+	// }	
 	
 	render(){
 		return (
 		<MuiThemeProvider muiTheme={muiTheme}> 			
 			<div className="container">
 				<AppBar title="Title" iconClassNameRight="muidocs-icon-navigation-expand-more">
-					<RaisedButton label="Salvar" primary={true} style={style}/>
+					<RaisedButton label="Salvar" primary={true} className="estilo"/>
 				</AppBar>
 				<header>
-					<Venda /*renderProdutosSelect={this.renderProdutosSelect()}*//>
+					<Venda />
 					<h1>Produtos</h1>
 					<FormProduto />
 				</header>				
 				<ProdutoLista />
-				{/* <ul>{ this.renderProdutos() }</ul> */}
 			</div>
 		</MuiThemeProvider>
 		);
@@ -77,7 +64,6 @@ class App extends Component{
 
 App.propTypes = {
   produtos: PropTypes.array.isRequired,
-  renderProdutosSelect: PropTypes.function,
 };
 
 export default createContainer(() => {

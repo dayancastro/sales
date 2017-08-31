@@ -43,9 +43,7 @@ class ProdutoLista extends Component{
             </Table>        
         );
     }
-
 }
-
 
 export default createContainer(() => {
     return {
