@@ -49,16 +49,11 @@ class App extends Component{
 				</AppBar>
 				<header>					
 				</header>				
-				<body>
 				<Grid fluid>
-					<Venda />
+					<Venda key={111} />
 						<h1>Produtos</h1>
-						<FormProduto />
-				
-
+						<FormProduto />			
 				</Grid>
-				</body>
-
 				<ProdutoLista />
 			</div>
 		</MuiThemeProvider>

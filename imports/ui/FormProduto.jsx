@@ -4,6 +4,7 @@ import { Produtos } from '../api/produtos.js'
 //Theme
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import {Grid, Row, Col} from 'meteor/jimmiebtlr:react-flexbox-grid'
 
 class FormProduto extends Component{
     constructor(props) {
@@ -49,7 +50,7 @@ class FormProduto extends Component{
     render(){
         return (
             <div>
-                <form className="new-produto" onSubmit={this.handleSubmitProduto.bind(this)}>						
+                <form className="new-produto" onSubmit={this.handleSubmitProduto.bind(this)}>
                     <TextField value={this.state.txtProduto} onChange={this.handleChangeProduto} floatingLabelText="Nome do produto" className="estilo"/>
                     <TextField value={this.state.txtProdDesc} onChange={this.handleChangeProdDesc} floatingLabelText="Descrição do produto" className="estilo"/>
                     <TextField value={this.state.txtProdValor} onChange={this.handleChangeProdValor} floatingLabelText="Valor do produto" className="estilo"/>

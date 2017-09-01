@@ -1,16 +1,17 @@
 import React, { Component, PropTypes } from 'react';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
-import {createContainer} from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
+import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
+import { createContainer } from 'meteor/react-meteor-data';
 import { Produtos } from '../api/produtos.js'
 
 class ProdutoLista extends Component{
+
+    handleDelete = (event, id) => {
+        console.log(id);
+        Meteor.call('produtos.remove',id);
+        // let prod = Produtos.findOne({_id:id});
+        // Produtos.remove({_id:prod['_id']});
+    };
 
     renderProdutosRows(){
         return this.props.produtos.map( (produto) => (
@@ -20,6 +21,7 @@ class ProdutoLista extends Component{
                 <TableRowColumn key={"ColDesc-" + produto._id}>{produto.descricao}</TableRowColumn>
                 <TableRowColumn key={"ColVar-" + produto._id}>{produto.valor}</TableRowColumn>
                 <TableRowColumn key={"ColQtd-" + produto._id}>{produto.quantidadeDisponivel}</TableRowColumn>
+                <TableRowColumn key={"del-" + produto._id}><button onClick={this.handleDelete.bind(this, produto._id)}>Remover</button></TableRowColumn>
             </TableRow>
         ));
     }
@@ -35,6 +37,7 @@ class ProdutoLista extends Component{
                         <TableHeaderColumn>Descrição</TableHeaderColumn>
                         <TableHeaderColumn>Valor</TableHeaderColumn>
                         <TableHeaderColumn>Quantidade Disponível</TableHeaderColumn>
+                        <TableHeaderColumn>Remover</TableHeaderColumn>
                     </TableRow>
                 </TableHeader>			 
                 <TableBody>

@@ -34,6 +34,7 @@ class Venda extends Component{
 	handleProdutosVendidos(){
 		this.setState({
 			produtosVendidos: [...this.state.produtosVendidos, {
+				_idProduto: '324121',
 				produto: "",
 				valor: 100,
 				total:100,			
@@ -48,14 +49,14 @@ class Venda extends Component{
 
 	renderProdutosVendidos(){
 		return this.state.produtosVendidos.map((item)=>(
-			<ProdutoItemVenda produto={this.state.produtosVendidos} />
+			<ProdutoItemVenda key={this.state.produtosVendidos._idProduto} produto={this.state.produtosVendidos} />
 		));
 	};
 
 	handleChange = (event, _id, value) => {
 		this.setState({value: value});
 		console.log(event.target.parentElement.parentElement.parentElement.id);
-		console.log(event);
+		// console.log(event);
 		this.handleProdutosVendidos();
 	};
 	
@@ -68,7 +69,7 @@ class Venda extends Component{
 			<div>
 				<h1>Vendas</h1>
 					<form className="new-venda" onSubmit={this.handleSubmitVenda.bind(this)}>										
-						<Row center="lg">
+						<Row >
 							<Col xs={4}>
 								<TextField ref="cliInput" floatingLabelText="Nome do cliente" required={true} errorText="Campo requerido." className="estilo"/>														
 							</Col>	
@@ -98,7 +99,7 @@ class Venda extends Component{
 	renderProdutosSelect(){
 		console.log(this.state.produtosVendidos);
 		return this.props.produtos.map( (produto, index) => (
-			<MenuItem value={index+1} id={produto._id} produto={produto} primaryText={produto.produto}/>
+			<MenuItem key={produto._id} value={index+1} id={produto._id} produto={produto} primaryText={produto.produto}/>
 		));
 	};
 }
